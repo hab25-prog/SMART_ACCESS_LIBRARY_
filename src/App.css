@@ -1,38 +1,198 @@
-.App {
-  text-align: center;
+/* App.css */
+/* App.css or global.css 
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 16px;
+  transition: transform 0.2s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card:hover {
+  transform: translateY(-4px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  top: 0;
+  width: 370px;
+  background-color: #1e1e2f;
+  color: #ffffff;
+  padding-top: 20px;
+  border-top-left-radius: 25px;
+  height: 100vh;
+  position: sticky;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.sidebar li {
+  padding: 10px 20px;
+  display: flex;
   align-items: center;
+}
+
+.sidebar li {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  /* border-bottom: 1px solid #e0e0e0; */
+  box-shadow: 0 1px 6px #2f80ed;
+}
+
+.sidebar li:hover {
+  background-color: #2a2a3f;
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 10px;
+}
+.main-content {
+  flex-wrap: wrap;
+  gap: 20px;
+
+  padding: 2rem;
+  background-color: #f6f6f9;
+  overflow: scroll;
+  scrollbar-width: none;
+  width: auto;
+}
+.scrolle {
+  overflow: scroll;
+  scrollbar-width: none;
+}
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.preview-card {
+  background: linear-gradient(to right, #dbe9f4, #fdfdfd);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+.card {
+  width: 250px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.logo {
+  font-size: 1.8rem;
+  width: 100%;
+  color: #4d57ca;
+  margin: 25px 10px;
+}
+.img {
+  height: 200px;
+}
+section {
+  margin-bottom: 2rem;
+}
+.search-bar {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+}
+.flex {
+  display: flex;
+  gap: 20px;
+}
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: transform 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.card:hover {
+  transform: translateY(-4px);
 }
+/* Base layout stays the same */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Media query for tablets (≤768px) */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .sidebar {
+    width: 100%;
+    flex: none;
+    padding: 1rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+  .sidebar ul {
+    /* personal adding */
+    /* git remote add origin */
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
+  .sidebar li {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1px 3px;
+    border-radius: 25px;
+  }
+}
+
+/* Media query for phones (≤480px) */
+@media screen and (max-width: 480px) {
+  .sidebar h2 {
+    font-size: 1.2rem;
+  }
+
+  .sidebar li {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    font-size: 0.9rem;
+    padding: 0.75rem;
   }
 }

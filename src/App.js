@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import SideBar from "./sidebar";
+import MainContent from "./mainContent";
+import "./App.css";
+import { useState } from "react";
+import Upload from "./upload";
 
-function App() {
+export default function App() {
+  const [page, setPages] = useState("main");
+  function nav(txt) {
+    setPages(txt);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <SideBar nav={nav} />
+      {page === "upload" ? <Upload /> : <MainContent />}
     </div>
   );
 }
-
-export default App;

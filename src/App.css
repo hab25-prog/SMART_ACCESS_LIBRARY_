@@ -110,14 +110,7 @@ h1 {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
   font-family: "Inter", sans-serif;
 }
-.card {
-  width: 250px;
-  flex-shrink: 0;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  background: linear-gradient(to right, #e0f7fa, #ffffff);
-}
+
 .logo {
   font-size: 1.8rem;
   width: 100%;
@@ -142,13 +135,26 @@ section {
   gap: 20px;
 }
 .card {
+  width: 20%;
+  /* flex-shrink: 0; */
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
   transition: transform 0.2s ease;
+  border-radius: 16px;
+  min-width: 180px;
+  padding: 1.25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
 }
-
 .card:hover {
   transform: translateY(-4px);
 }
@@ -240,7 +246,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 
 .logo-icon {
@@ -351,7 +357,7 @@ section {
 .card-grid {
   display: flex;
   gap: 1rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   overflow-x: auto;
   padding-bottom: 1rem;
 }
@@ -363,17 +369,6 @@ section {
 .card-grid {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-.card {
-  border-radius: 16px;
-  min-width: 180px;
-  padding: 1.25rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  cursor: pointer;
 }
 
 .image-placeholder {
@@ -583,28 +578,34 @@ section {
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
-    min-height: 72px;
+    min-height: 194px;
+    height: auto;
     display: flex;
     color: wheat;
-    flex-direction: row;
+    flex-direction: column;
     padding: 0.75rem 1.5rem;
     border-radius: 0;
-    align-items: center;
+    /* align-items: center; */
     gap: 1.5rem;
   }
 
   .sidebar ul {
     flex-direction: row;
     gap: 1rem;
-    flex: 1;
+    flex-wrap: wrap;
+    margin-top: 0;
+    /* flex: 1; */
   }
 
   .sidebar li {
     font-size: 0.9rem;
     padding: 0.5rem 0.8rem;
+    flex-shrink: 1;
+    font-size: 100%;
   }
 
   .main-content-wrapper {
     padding: 1.5rem;
+    height: 100vh;
   }
 }

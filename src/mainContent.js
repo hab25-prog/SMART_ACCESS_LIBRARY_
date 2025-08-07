@@ -48,7 +48,7 @@ export default function MainContent() {
 
       <section>
         <h2 className="section-title">Suggested for You</h2>
-        <div className="card-grid">
+        <div className="card-grid flex">
           {filteredBooks.slice(0, 8).map((book, index) => (
             <Content key={book.id || index} book={book} />
           ))}

@@ -18,15 +18,11 @@ export default function App() {
     <div className="container">
       <SideBar nav={nav} isLogin={isLogin} />
 
-      {isLogin ? (
-        page === "upload" ? (
-          <Upload handlLogin={handlLogin} />
-        ) : (
-          <MainContent />
-        )
-      ) : (
-        <LoginForm handlLogin={handlLogin} />
-      )}
+      {page === "upload" && <Upload handlLogin={handlLogin} />}
+
+      {page === "main" && <MainContent />}
+
+      {page === "login_tab" && <LoginForm handlLogin={handlLogin} />}
     </div>
   );
 }

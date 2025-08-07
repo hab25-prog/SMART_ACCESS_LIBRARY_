@@ -6,6 +6,7 @@ import {
   FaUpload,
   FaUserCog,
   FaHeart,
+  FaSignInAlt,
 } from "react-icons/fa";
 
 export default function SideBar({ nav, isLogin, active }) {
@@ -32,6 +33,14 @@ export default function SideBar({ nav, isLogin, active }) {
             onClick={() => nav("main")}
           >
             <FaHome className="icon" /> Home
+          </li>
+          <li
+            className={`${isLogin ? "hidden" : ""} ${
+              active === "login_tab" ? "active" : ""
+            }`}
+            onClick={() => nav("login_tab")}
+          >
+            <FaSignInAlt className="icon" /> SIGN IN
           </li>
           <li
             className={`${active === "upload" ? "active" : ""} ${

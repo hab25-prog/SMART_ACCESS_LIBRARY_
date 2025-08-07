@@ -96,7 +96,7 @@ h1 {
   overflow: scroll;
   scrollbar-width: none;
 }
-.preview-grid {
+/* .preview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
@@ -109,16 +109,16 @@ h1 {
   padding: 1rem;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
   font-family: "Inter", sans-serif;
-}
+} */
 
-.logo {
+/* .logo {
   font-size: 1.8rem;
   width: 100%;
   color: #4d57ca;
   margin-bottom: 20px;
-}
+} */
 .img {
-  height: 200px;
+  height: 100px;
 }
 section {
   margin-bottom: 2rem;
@@ -231,7 +231,7 @@ section {
 /* Sidebar */
 .sidebar {
   background: #10203f;
-  width: 450px;
+  width: 25%;
   min-height: 100vh;
   padding: 2rem 1rem;
   color: #f8faff;
@@ -369,6 +369,7 @@ section {
 .card-grid {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  justify-content: center;
 }
 
 .image-placeholder {
@@ -607,5 +608,12 @@ section {
   .main-content-wrapper {
     padding: 1.5rem;
     height: 100vh;
+  }
+  .card-grid {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 0.2rem;
   }
 }

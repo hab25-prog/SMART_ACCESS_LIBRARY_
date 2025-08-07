@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Content from "./content"; // Make sure this path matches your file structure
-// grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6
-const MainContent = () => {
+import Content from "./content";
+
+export default function MainContent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setBooks] = useState([]);
 
@@ -17,42 +17,43 @@ const MainContent = () => {
   );
 
   return (
-    <main className="scrolle">
-      <div className="mb-8">
+    <main className="main-content-wrapper">
+      <div className="search-bar-container">
         <input
           type="text"
-          placeholder="Search book titles..."
+          placeholder="Search..."
+          aria-label="Search books"
+          className="search-bar"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-bar"
         />
+        <button className="icon-button" aria-label="Select language">
+          🌐
+        </button>
+        <button className="icon-button" aria-label="User profile">
+          👤
+        </button>
       </div>
 
-      {/* Recently Uploaded Section */}
-      <section className="">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">
-          Recently Uploaded
-        </h2>
-        <div className="main-content flex">
+      <h1 className="welcome-header">Welcome to SmartAccess</h1>
+
+      <section>
+        <h2 className="section-title">Recently Uploaded</h2>
+        <div className="card-grid">
           {filteredBooks.slice(0, 8).map((book, index) => (
             <Content key={book.id || index} book={book} />
           ))}
         </div>
       </section>
 
-      {/* Suggested for You Section */}
-      <section className="">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">
-          Suggested for You
-        </h2>
-        <div className="main-content flex">
-          {filteredBooks.slice(8, 16).map((book, index) => (
+      <section>
+        <h2 className="section-title">Suggested for You</h2>
+        <div className="card-grid">
+          {filteredBooks.slice(0, 8).map((book, index) => (
             <Content key={book.id || index} book={book} />
           ))}
         </div>
       </section>
     </main>
   );
-};
-
-export default MainContent;
+}

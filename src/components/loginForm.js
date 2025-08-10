@@ -1,3 +1,4 @@
+// =================== loginForm.js ===================
 import React, { useState } from "react";
 
 const LoginForm = ({ handlLogin }) => {
@@ -6,7 +7,6 @@ const LoginForm = ({ handlLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // alert(`Logging in with\nEmail: ${email}\nPassword: ${password}`);
     if (email === "" || password === "") return;
     handlLogin();
   };
@@ -16,17 +16,17 @@ const LoginForm = ({ handlLogin }) => {
       <h1 className="title">Log In</h1>
       <form className="form" onSubmit={handleSubmit} noValidate>
         <label className="label" htmlFor="email">
-          User Name
+          Email
         </label>
         <input
           id="email"
           type="text"
-          placeholder="user123"
+          placeholder="Email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="input"
-          autoComplete={false}
+          autoComplete="username"
         />
 
         <label className="label" htmlFor="password">
@@ -40,7 +40,7 @@ const LoginForm = ({ handlLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="input"
-          autoComplete={false}
+          autoComplete="current-password"
         />
 
         <button type="submit" className="button">

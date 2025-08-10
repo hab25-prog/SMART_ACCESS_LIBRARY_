@@ -4,15 +4,18 @@ import Content from "./content";
 const temp = [
   {
     title: "grade 10 TXT Booke",
-    autor: "gov",
+    author: "gov",
+    image: null,
   },
   {
     title: "grade 9 TXT Booke",
     author: "gov",
+    image: null,
   },
   {
     title: "ppt of kenematics",
     author: "mr habtamu",
+    image: null,
   },
 ];
 
@@ -41,17 +44,14 @@ export default function MainContent() {
           type="text"
           placeholder="Search..."
           aria-label="Search books"
-          className="search-bar"
+          className="search-bar search-bar"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
           className="icon-button"
           aria-label="Select language"
-          onClick={() => {
-            if (language === "en") setLanguage("am");
-            if (language === "am") setLanguage("en");
-          }}
+          onClick={() => setLanguage(language === "en" ? "am" : "en")}
         >
           🌐
         </button>
@@ -61,9 +61,10 @@ export default function MainContent() {
       </div>
 
       <h1 className="welcome-header">
-        {language === "en" ? "Welcome to SmartAccess" : "እንክዋን በደህና መጡ"}
+        {language === "en" ? "Welcome to SmartAccess" : "ሰላም እንኳን ደህና መጣህ"}
       </h1>
 
+      {/* Recently Uploaded Grid Section */}
       <section>
         <h2 className="section-title">Recently Uploaded</h2>
         <div className="card-grid">
@@ -73,9 +74,10 @@ export default function MainContent() {
         </div>
       </section>
 
+      {/* Suggested For You Grid Section */}
       <section>
         <h2 className="section-title">Suggested for You</h2>
-        <div className="card-grid flex">
+        <div className="card-grid">
           {filteredBooks.slice(0, 8).map((book, index) => (
             <Content key={book.id || index} book={book} />
           ))}

@@ -331,24 +331,7 @@ section {
   text-decoration: underline;
 }
 /* Media query for phones (≤480px) */
-@media screen and (max-width: 480px) {
-  .sidebar h2 {
-    font-size: 1.2rem;
-  }
 
-  .sidebar li {
-    font-size: 0.9rem;
-  }
-
-  .card {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-  }
-  .main {
-    height: 37vh;
-    margin-top: 95px;
-  }
-}
 /* //////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* Sidebar */
@@ -738,6 +721,28 @@ section {
     flex-direction: row;
     width: 100%;
     gap: 0.1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .sidebar h2 {
+    font-size: 1.2rem;
+  }
+
+  .sidebar li {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .main {
+    height: 37vh;
+    margin-top: 95px;
   }
 }
 .hidden {

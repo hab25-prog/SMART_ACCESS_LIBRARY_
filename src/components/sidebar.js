@@ -1,4 +1,21 @@
 import React from "react";
+import { useState, useEffect } from "react";
+/*import { useState, useEffect } from "react";
+
+function useScreenSize() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return width;
+}
+*/
+
 import {
   FaFolderOpen,
   FaCogs,
@@ -11,73 +28,23 @@ import {
 import image from "../asset/logo.png";
 
 export default function SideBar({ nav, isLogin, active }) {
+  const screenWidth = useScreenSize();
+  const isMobile = screenWidth <= 768;
+
   return (
     <div className="sidebar">
+      {isMobile && (
+        <button className="drawer" onClick={() => console.log("clicked")}>
+          ☰ Menu
+        </button>
+      )}
       <div>
         <div className="logo-container">
           <img src={image} alt="LOGO" className="logo" />
         </div>
-        <ul>
-          <li
-            className={active === "main" ? "active" : ""}
-            onClick={() => nav("main")}
-          >
-            <FaHome className="icon" /> Home
-          </li>
-          <li
-            className={`${isLogin ? "hidden" : ""} ${
-              active === "login_tab" ? "active" : ""
-            }`}
-            onClick={() => nav("login_tab")}
-          >
-            <FaSignInAlt className="icon" /> SIGN IN
-          </li>
-          <li
-            className={`${active === "upload" ? "active" : ""} ${
-              isLogin ? "" : "hidden"
-            }`}
-            onClick={() => nav("upload")}
-          >
-            <FaUpload className="icon" /> Upload
-          </li>
-          <li
-            className={`${active === "browser" ? "active" : ""} ${
-              isLogin ? "" : "hidden"
-            }`}
-            onClick={() => nav("browser")}
-          >
-            <FaFolderOpen className="icon" />
-            Browse
-          </li>
-          <li
-            className={`${active === "favorites" ? "active" : ""} ${
-              isLogin ? "" : "hidden"
-            }`}
-            onClick={() => nav("favorites")}
-          >
-            <FaHeart className="icon" />
-            Favorites
-          </li>
-          <li
-            className={`${active === "manage" ? "active" : ""} ${
-              isLogin ? "" : "hidden"
-            }`}
-            onClick={() => nav("manage")}
-          >
-            <FaUserCog className="icon" />
-            Manage Users
-          </li>
-          <li
-            className={`${isLogin ? "" : "hidden"} ${
-              active === "setting" ? "active" : ""
-            }`}
-            onClick={() => nav("setting")}
-          >
-            <FaCogs className="icon" />
-            Settings
-          </li>
-        </ul>
+        <SideBarList nav={nav} isLogin={isLogin} active={active} />
       </div>
+
       <div className={`user-info ${isLogin ? "" : "hidden"}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -101,4 +68,82 @@ export default function SideBar({ nav, isLogin, active }) {
       </div>
     </div>
   );
+}
+
+function SideBarList({ nav, isLogin, active }) {
+  return (
+    <ul>
+      <li
+        className={active === "main" ? "active" : ""}
+        onClick={() => nav("main")}
+      >
+        <FaHome className="icon" /> Home
+      </li>
+      <li
+        className={`${isLogin ? "hidden" : ""} ${
+          active === "login_tab" ? "active" : ""
+        }`}
+        onClick={() => nav("login_tab")}
+      >
+        <FaSignInAlt className="icon" /> SIGN IN
+      </li>
+      <li
+        className={`${active === "upload" ? "active" : ""} ${
+          isLogin ? "" : "hidden"
+        }`}
+        onClick={() => nav("upload")}
+      >
+        <FaUpload className="icon" /> Upload
+      </li>
+      <li
+        className={`${active === "browser" ? "active" : ""} ${
+          isLogin ? "" : "hidden"
+        }`}
+        onClick={() => nav("browser")}
+      >
+        <FaFolderOpen className="icon" />
+        Browse
+      </li>
+      <li
+        className={`${active === "favorites" ? "active" : ""} ${
+          isLogin ? "" : "hidden"
+        }`}
+        onClick={() => nav("favorites")}
+      >
+        <FaHeart className="icon" />
+        Favorites
+      </li>
+      <li
+        className={`${active === "manage" ? "active" : ""} ${
+          isLogin ? "" : "hidden"
+        }`}
+        onClick={() => nav("manage")}
+      >
+        <FaUserCog className="icon" />
+        Manage Users
+      </li>
+      <li
+        className={`${isLogin ? "" : "hidden"} ${
+          active === "setting" ? "active" : ""
+        }`}
+        onClick={() => nav("setting")}
+      >
+        <FaCogs className="icon" />
+        Settings
+      </li>
+    </ul>
+  );
+}
+
+function useScreenSize() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return width;
 }

@@ -1,28 +1,29 @@
-import SideBar from "./sidebar";
-import MainContent from "./mainContent";
+import SideBar from "./components/sidebar";
+import MainContent from "./components/mainContent";
 import "./App.css";
 import { useState } from "react";
-import Upload from "./upload";
-import LoginForm from "./loginForm";
+import Upload from "./components/upload";
+import LoginForm from "./components/loginForm";
 
 export default function App() {
   const [page, setPages] = useState("main");
-  const [isLogin, setIsLogin] = useState(false);
+  const [_isLogin, setIsLogin] = useState(false);
   function nav(txt) {
     setPages(txt);
   }
   function handlLogin() {
-    setIsLogin(!isLogin);
+    setIsLogin(!_isLogin);
+    setPages("main");
   }
   return (
     <div className="container">
-      <SideBar nav={nav} isLogin={isLogin} />
-
+      <SideBar nav={nav} isLogin={_isLogin} />
+      {page === "login_tab" && !_isLogin && (
+        <LoginForm handlLogin={handlLogin} />
+      )}
       {page === "upload" && <Upload handlLogin={handlLogin} />}
 
       {page === "main" && <MainContent />}
-
-      {page === "login_tab" && <LoginForm handlLogin={handlLogin} />}
     </div>
   );
 }

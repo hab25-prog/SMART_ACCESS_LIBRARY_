@@ -16,17 +16,17 @@ const LoginForm = ({ handlLogin }) => {
       <h1 className="title">Log In</h1>
       <form className="form" onSubmit={handleSubmit} noValidate>
         <label className="label" htmlFor="email">
-          Email
+          User Name
         </label>
         <input
           id="email"
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="user123"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="input"
-          autoComplete="username"
+          autoComplete={false}
         />
 
         <label className="label" htmlFor="password">
@@ -40,7 +40,7 @@ const LoginForm = ({ handlLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="input"
-          autoComplete="current-password"
+          autoComplete={false}
         />
 
         <button type="submit" className="button">

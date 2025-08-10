@@ -8,24 +8,14 @@ import {
   FaHeart,
   FaSignInAlt,
 } from "react-icons/fa";
+import image from "../asset/logo.png";
 
 export default function SideBar({ nav, isLogin, active }) {
   return (
     <div className="sidebar">
       <div>
         <div className="logo-container">
-          <svg
-            className="logo-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
-            viewBox="0 0 24 24"
-            fill="#4A90E2"
-          >
-            <path d="M4 3h16v18H4z" fill="#63B3ED" />
-            <path d="M4 12h8v9H4z" fill="#4299E1" />
-          </svg>
-          <h1 className="logo-text">SmartAccess</h1>
+          <img src={image} alt="LOGO" className="logo" />
         </div>
         <ul>
           <li
